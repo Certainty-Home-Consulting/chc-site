@@ -1,4 +1,4 @@
-const CHC_FORM_ENDPOINT = window.CHC_FORM_ENDPOINT || 'https://script.google.com/macros/s/AKfycby8jXhb18s0NOmR65n10f3IpnbOjiff-81LqwKyrtOLFRZP5cvvoIERRRTPDEzqHVqiVQ/exec';
+const CHC_FORM_ENDPOINT = window.CHC_FORM_ENDPOINT || 'https://script.google.com/macros/s/AKfycbzREDZeb6ZUx7lYwdNJZqT1RFynI4lV0RfB71AXXVnMBo0JXh2lxUbE3Uo65aVdcC3D-w/exec';
 
 // Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {
@@ -33,8 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = Object.fromEntries(formData);
 
             // Basic validation
-            if (!data.name || !data.email || !data.project) {
+            if (!data.name || !data.email || !data.project || !data.stress) {
                 setStatus('Please fill in all required fields.');
+                return;
+            }
+            if (data.feedback_consent !== 'yes') {
+                setStatus('Please agree to the feedback exchange to continue.');
                 return;
             }
 

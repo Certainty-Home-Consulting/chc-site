@@ -91,7 +91,8 @@
     <!-- Contact Form -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Schedule Your Advisory Call</h2>
+            <h2>Quick Advisory Intake (2 minutes)</h2>
+            <p class="contact-helper">Share the essentials so Todd can prep useful guidance before your call.</p>
             <form class="contact-form" novalidate>
                 <input type="text" name="website" id="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <div class="form-group">
@@ -120,6 +121,16 @@
                         <option value="urgent">Need help immediately</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="stress">What is stressing you out most about this project right now?</label>
+                    <textarea id="stress" name="stress" rows="3" required></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="feedback_consent" name="feedback_consent" value="yes" required>
+                        I agree to provide brief feedback after the complimentary advisory call.
+                    </label>
+                </div>
                 <button type="submit" class="cta-button-primary">Apply for Advisory Call</button>
                 <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
             </form>
@@ -140,7 +151,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Certainty Home Consulting. All rights reserved. <a href="https://wade.digital" target="_blank" rel="noopener noreferrer">Built by wade.digital</a> · v0.2.0</p>
+                <p>&copy; 2026 Certainty Home Consulting. All rights reserved. <a href="https://wade.digital" target="_blank" rel="noopener noreferrer">Built by wade.digital</a> · v0.2.1</p>
             </div>
         </div>
     </footer>

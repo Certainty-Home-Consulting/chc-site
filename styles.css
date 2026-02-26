@@ -270,6 +270,13 @@ section {
     text-align: center;
 }
 
+.contact-helper {
+    max-width: 720px;
+    margin: -0.5rem auto 1.25rem;
+    color: #3E556B;
+    font-size: 1rem;
+}
+
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
@@ -325,6 +332,26 @@ section {
     font-size: 0.95rem;
     color: #3E556B;
     min-height: 1.2rem;
+}
+
+
+.checkbox-group {
+    margin-top: -0.25rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: #3E556B;
+    line-height: 1.4;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 16px;
+    height: 16px;
 }
 
 /* Footer */
