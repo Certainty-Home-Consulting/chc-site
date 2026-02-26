@@ -130,9 +130,10 @@ section {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('images/hero-banner.png');
+    background: linear-gradient(rgba(44, 62, 80, 0.72), rgba(44, 62, 80, 0.72)), url('images/hero-banner.png');
     background-size: cover;
-    background-position: center;
+    /* Reframe to emphasize the house and crop out baked-in text in source image */
+    background-position: 78% 18%;
     background-attachment: fixed;
     text-align: center;
     padding: 8rem 0 6rem;
@@ -356,6 +357,7 @@ footer {
     
     .hero {
         padding: 6rem 0 4rem;
+        background-position: 72% 22%;
     }
     
     section {
