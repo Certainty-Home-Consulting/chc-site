@@ -12,20 +12,6 @@ body {
     background-color: #fff;
 }
 
-.site-version {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 2000;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    padding: 4px 8px;
-    border-radius: 6px;
-    pointer-events: none;
-}
 
 .container {
     max-width: 1200px;
@@ -327,6 +313,20 @@ section {
     margin-top: 1rem;
 }
 
+.hp-field {
+    position: absolute !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.form-status {
+    margin-top: 0.85rem;
+    font-size: 0.95rem;
+    color: #3E556B;
+    min-height: 1.2rem;
+}
+
 /* Footer */
 footer {
     background: #2c3e50;
@@ -364,6 +364,16 @@ footer {
     text-align: center;
     color: #bdc3c7;
     font-size: 0.875rem;
+}
+
+
+.footer-bottom a {
+    color: #93c5fd;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
 }
 
 /* Responsive Design */
