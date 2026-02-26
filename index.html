@@ -94,7 +94,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2>Schedule Your Advisory Call</h2>
-            <form class="contact-form">
+            <form class="contact-form" novalidate>
+                <input type="text" name="website" id="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -122,6 +123,7 @@
                     </select>
                 </div>
                 <button type="submit" class="cta-button-primary">Apply for Advisory Call</button>
+                <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
@@ -136,7 +138,7 @@
                 </div>
                 <div class="footer-contact">
                     <p>Independent renovation advisory</p>
-                    <p>Email: info@certaintyhome.consulting</p>
+                    <p>Phone: 804-506-3715</p>
                 </div>
             </div>
             <div class="footer-bottom">
