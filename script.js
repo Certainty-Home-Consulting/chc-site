@@ -1,3 +1,5 @@
+const CHC_FORM_ENDPOINT = window.CHC_FORM_ENDPOINT || 'https://script.google.com/macros/s/AKfycby8jXhb18s0NOmR65n10f3IpnbOjiff-81LqwKyrtOLFRZP5cvvoIERRRTPDEzqHVqiVQ/exec';
+
 // Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links
@@ -14,38 +16,70 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    const setStatus = (msg) => {
+        const el = document.getElementById('form-status');
+        if (el) el.textContent = msg || '';
+    };
+
     // Contact form handling
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+            const btn = this.querySelector('button[type="submit"]');
+
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
-            
+
             // Basic validation
             if (!data.name || !data.email || !data.project) {
-                alert('Please fill in all required fields.');
+                setStatus('Please fill in all required fields.');
                 return;
             }
-            
+
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
-                alert('Please enter a valid email address.');
+                setStatus('Please enter a valid email address.');
                 return;
             }
-            
-            // Show success message (replace with actual form submission)
-            alert('Thank you! Your application has been submitted. Todd will contact you within 24 hours.');
-            
-            // Reset form
-            this.reset();
-            
-            // TODO: Replace with actual form submission to your preferred service
-            // Options: Netlify Forms, Formspree, EmailJS, or custom backend
-            console.log('Form data:', data);
+
+            // Honeypot
+            if (data.website) {
+                setStatus('Submitted.');
+                this.reset();
+                return;
+            }
+
+            if (!CHC_FORM_ENDPOINT) {
+                setStatus('Intake endpoint not configured yet.');
+                return;
+            }
+
+            try {
+                btn.disabled = true;
+                setStatus('Submitting...');
+
+                const res = await fetch(CHC_FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const json = await res.json().catch(() => ({}));
+                if (!res.ok || json.ok === false) {
+                    throw new Error(json.error || 'Submission failed');
+                }
+
+                setStatus('Thanks — your advisory request is in. Todd will follow up shortly.');
+                this.reset();
+            } catch (err) {
+                setStatus('Submission failed. Please try again in a minute.');
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+            }
         });
     }
 
