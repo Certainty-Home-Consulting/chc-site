@@ -61,16 +61,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.disabled = true;
                 setStatus('Submitting...');
 
-                const res = await fetch(CHC_FORM_ENDPOINT, {
+                // Apps Script web apps typically do not return CORS headers.
+                // Use no-cors + form-encoded payload for reliable cross-origin submit.
+                const formBody = new URLSearchParams(data);
+                await fetch(CHC_FORM_ENDPOINT, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+                    body: formBody
                 });
-
-                const json = await res.json().catch(() => ({}));
-                if (!res.ok || json.ok === false) {
-                    throw new Error(json.error || 'Submission failed');
-                }
 
                 setStatus('Thanks — your advisory request is in. Todd will follow up shortly.');
                 this.reset();
