@@ -1,0 +1,14 @@
+{
+  "timeZone": "America/New_York",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "CHCIntakeLib",
+        "libraryId": "1I7BJnOHgtHTErAnOx89TzR8SaoPTbiI8HDFkxJ-Y7y_VLy7_gllSWZ5O",
+        "version": "2"
+      }
+    ]
+  }
+}
