@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Booked — Certainty Home Consulting</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-page {
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F5F7FA;
+            padding: 3rem 1.5rem;
+        }
+
+        .success-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            padding: 3.5rem 3rem;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .check-icon {
+            width: 72px;
+            height: 72px;
+            background: #e8f4ee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.75rem;
+        }
+
+        .check-icon svg {
+            width: 36px;
+            height: 36px;
+            color: #2a9d5c;
+        }
+
+        .success-card h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1F2933;
+            margin-bottom: 0.75rem;
+        }
+
+        .success-card .tagline {
+            font-size: 1.0625rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps {
+            background: #F5F7FA;
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps h3 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+
+        .next-steps ol {
+            padding-left: 1.25rem;
+            margin: 0;
+        }
+
+        .next-steps ol li {
+            font-size: 0.9875rem;
+            color: #374151;
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+        }
+
+        .success-card .receipt-note {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+
+        .back-home-btn {
+            display: inline-block;
+            background: #0c1d39;
+            color: #fff;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .back-home-btn:hover {
+            background: #1a3060;
+        }
+
+        @media (max-width: 600px) {
+            .success-card {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/chc-logo.webp" alt="Certainty Home Consulting">
+                <span>Certainty Home Consulting</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="success-page">
+        <div class="success-card">
+
+            <div class="check-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+
+            <h1>You're booked.</h1>
+            <p class="tagline">Payment confirmed. Todd will be in touch shortly to schedule your 30-minute review.</p>
+
+            <div class="next-steps">
+                <h3>What happens next</h3>
+                <ol>
+                    <li>Check your inbox — a confirmation email is on its way.</li>
+                    <li>Todd will reach out within 1 business day to confirm your session time.</li>
+                    <li>Have your quote(s) handy before the call — that's all you need.</li>
+                </ol>
+            </div>
+
+            <p class="receipt-note">A receipt has been sent to your email address. Questions? Reply to that email.</p>
+
+            <a href="index.html" class="back-home-btn">Back to Home</a>
+
+        </div>
+    </div>
+
+    <script>
+        // Optional: fire a conversion event
+        // gtag('event', 'purchase', { ... });
+
+        // Pull email from query string for personalization (demo mode)
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get('email');
+        if (email) {
+            const note = document.querySelector('.receipt-note');
+            if (note) note.textContent = `A receipt has been sent to ${email}. Questions? Reply to that email.`;
+        }
+    </script>
+
+</body>
+</html>
