@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancelled — Certainty Home Consulting</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cancel-page {
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F5F7FA;
+            padding: 3rem 1.5rem;
+        }
+
+        .cancel-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            padding: 3.5rem 3rem;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .info-icon {
+            width: 72px;
+            height: 72px;
+            background: #fff8e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.75rem;
+        }
+
+        .info-icon svg {
+            width: 36px;
+            height: 36px;
+            color: #d97706;
+        }
+
+        .cancel-card h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1F2933;
+            margin-bottom: 0.75rem;
+        }
+
+        .cancel-card .tagline {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .reassurance {
+            background: #F5F7FA;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            margin-bottom: 2rem;
+            font-size: 0.9375rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .action-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+
+        .retry-btn {
+            display: inline-block;
+            background: #2E6DA4;
+            color: #fff;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .retry-btn:hover {
+            background: #255B8A;
+        }
+
+        .home-link {
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .home-link:hover {
+            color: #374151;
+        }
+
+        @media (max-width: 600px) {
+            .cancel-card {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/chc-logo.webp" alt="Certainty Home Consulting">
+                <span>Certainty Home Consulting</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="cancel-page">
+        <div class="cancel-card">
+
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+            </div>
+
+            <h1>Payment not completed.</h1>
+            <p class="tagline">
+                No charge was made. You can try again whenever you're ready — your quote isn't going anywhere.
+            </p>
+
+            <div class="reassurance">
+                <strong>Still unsure?</strong> That's exactly what this review is for. A 30-minute call with someone who knows how these quotes are built can make a $30K decision a lot clearer.
+            </div>
+
+            <div class="action-row">
+                <a href="book-review.html" class="retry-btn">Try Again — Book My Review</a>
+                <a href="index.html" class="home-link">← Back to home</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
