@@ -7,8 +7,14 @@
     <meta name="description" content="Get clarity before you commit. Book a 30-minute renovation quote review with Certainty Home Consulting.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- Stripe.js (load before DOM) -->
+    <!-- Stripe.js -->
     <script src="https://js.stripe.com/v3/"></script>
+    <!-- Payment Link — direct redirect, no backend needed -->
+    <script>
+      // Redirect to Stripe-hosted checkout immediately
+      // book-review.html acts as a pre-checkout landing/brief page
+      const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/00w4gz5Q4gDsgQJc3s2ZO00';
+    </script>
     <style>
         /* ── Page-level layout ── */
         .checkout-wrapper {
@@ -294,119 +300,47 @@
             </div>
         </div>
 
-        <!-- Right: Payment Form -->
+        <!-- Right: Checkout CTA -->
         <div class="checkout-form-panel">
-            <h2>Secure Checkout</h2>
-            <p class="form-subtext">Pay once. Session booked instantly.</p>
+            <h2>You're one step away.</h2>
+            <p class="form-subtext">Secure checkout powered by Stripe. Takes 60 seconds.</p>
 
-            <form id="payment-form" novalidate>
-
-                <!-- Contact info -->
-                <p class="form-section-label">Your Info</p>
-                <div class="form-group">
-                    <label for="buyer-name">Full Name</label>
-                    <input type="text" id="buyer-name" name="name" autocomplete="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="buyer-email">Email Address</label>
-                    <input type="email" id="buyer-email" name="email" autocomplete="email" required>
-                    <span style="font-size:0.8rem;color:#9ca3af;margin-top:0.3rem;display:block;">Booking confirmation sent here</span>
-                </div>
-
-                <hr class="divider">
-
-                <!-- Payment -->
-                <p class="form-section-label">Payment</p>
-                <div class="form-group">
-                    <label for="card-element">Card Details</label>
-                    <!-- Stripe Elements mounts here -->
-                    <div id="card-element"></div>
-                    <div id="card-errors" role="alert"></div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submit-btn">
+            <div style="margin: 2rem 0;">
+                <a href="https://buy.stripe.com/00w4gz5Q4gDsgQJc3s2ZO00" class="submit-btn" style="display:block; text-align:center; text-decoration:none;">
                     Pay $97 — Book My Review
-                </button>
+                </a>
+            </div>
 
-                <div class="secure-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                    Secured by Stripe · 256-bit encryption
-                </div>
+            <div class="next-steps-preview">
+                <p style="font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#9ca3af; margin-bottom:0.75rem;">After payment</p>
+                <ul style="list-style:none; padding:0; margin:0;">
+                    <li style="font-size:0.9375rem; color:#374151; margin-bottom:0.5rem;">✓ Confirmation email sent immediately</li>
+                    <li style="font-size:0.9375rem; color:#374151; margin-bottom:0.5rem;">✓ Todd contacts you within 1 business day to schedule</li>
+                    <li style="font-size:0.9375rem; color:#374151;">✓ Have your quote ready — that's all you need</li>
+                </ul>
+            </div>
 
-            </form>
+            <hr class="divider">
+
+            <div class="secure-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Secured by Stripe · 256-bit encryption
+            </div>
+
+            <p style="font-size:0.8rem; color:#9ca3af; text-align:center; margin-top:1rem;">
+                Questions? Email <a href="mailto:hello@wade.digital" style="color:#6b7280;">hello@wade.digital</a>
+            </p>
         </div>
 
     </div><!-- end .checkout-wrapper -->
 
     <script>
-        // ─────────────────────────────────────────────
-        // Replace with your Stripe publishable key
-        // ─────────────────────────────────────────────
-        const STRIPE_PUBLISHABLE_KEY = 'pk_test_REPLACE_WITH_YOUR_KEY';
-
-        const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-        const elements = stripe.elements();
-
-        const style = {
-            base: {
-                color: '#1F2933',
-                fontFamily: '"Inter", -apple-system, sans-serif',
-                fontSize: '16px',
-                '::placeholder': { color: '#9ca3af' }
-            },
-            invalid: { color: '#e53e3e' }
-        };
-
-        const cardElement = elements.create('card', { style });
-        cardElement.mount('#card-element');
-
-        cardElement.on('change', ({ error }) => {
-            document.getElementById('card-errors').textContent = error ? error.message : '';
-        });
-
-        const form = document.getElementById('payment-form');
-        const submitBtn = document.getElementById('submit-btn');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing…';
-
-            const name = document.getElementById('buyer-name').value.trim();
-            const email = document.getElementById('buyer-email').value.trim();
-
-            if (!name || !email) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Pay $97 — Book My Review';
-                document.getElementById('card-errors').textContent = 'Please fill in your name and email.';
-                return;
-            }
-
-            // ─────────────────────────────────────────────
-            // Option A: Stripe Payment Intent (requires backend)
-            // Fetch clientSecret from your server, then:
-            //
-            //   const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-            //     payment_method: {
-            //       card: cardElement,
-            //       billing_details: { name, email }
-            //     }
-            //   });
-            //   if (error) { ... } else { window.location = '/success.html?session=' + paymentIntent.id; }
-            //
-            // ─────────────────────────────────────────────
-            // Option B: Stripe Checkout (server creates session, redirect)
-            // Simpler for static sites — see integration notes below.
-            // ─────────────────────────────────────────────
-
-            // ── DEMO: remove this block once real backend is wired ──
-            console.log('Stripe integration placeholder. Wire backend to create PaymentIntent or Checkout Session.');
-            setTimeout(() => {
-                window.location.href = 'success.html?demo=1&email=' + encodeURIComponent(email);
-            }, 1200);
-        });
+        // Payment link: https://buy.stripe.com/00w4gz5Q4gDsgQJc3s2ZO00
+        // product_id: prod_UGMZLZ2txyYrWN
+        // price_id:   price_1THpqaFH565v30gl9rpd94W1
+        // payment_link_id: plink_1THprDFH565v30gl5OPLD8Q2
     </script>
 
 </body>
