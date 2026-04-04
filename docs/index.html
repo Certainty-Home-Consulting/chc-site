@@ -7,8 +7,91 @@
     <meta name="description" content="Independent renovation advisory for $10K+ projects. 15 years contractor sales experience now working for homeowners.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Hero phrase spotlight ── */
+        .hero-phrase {
+            opacity: 0.35;
+            transition: opacity 0.6s ease, text-shadow 0.6s ease;
+        }
+        .hero-phrase.lit {
+            opacity: 1;
+            text-shadow: 0 0 28px rgba(201,168,74,0.55), 0 0 8px rgba(255,255,255,0.2);
+        }
+
+        /* ── Scroll fade-in ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Sticky header shrink ── */
+        header {
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        }
+        header.scrolled {
+            padding-top: 6px !important;
+            padding-bottom: 6px !important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+        }
+
+        /* ── Floating Book Call button ── */
+        #floating-cta {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #2E6DA4;
+            color: #fff;
+            padding: 0.85rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(46,109,164,0.45);
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s ease;
+            z-index: 999;
+            font-family: 'Inter', sans-serif;
+        }
+        #floating-cta.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #floating-cta:hover {
+            background: #255B8A;
+        }
+
+        /* ── "Does This Sound Familiar" checkbox animate-in ── */
+        .familiar-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .familiar-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ── Testimonial glow effect ── */
+        .testimonial-card {
+            transition: box-shadow 0.4s ease, transform 0.4s ease;
+        }
+        .testimonial-card.glow {
+            box-shadow: 0 4px 32px rgba(201,168,74,0.3), 0 2px 12px rgba(0,0,0,0.06) !important;
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Floating CTA -->
+    <a href="#contact" id="floating-cta">Book Call →</a>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -34,12 +117,11 @@
                 <span class="hero-phrase"><strong>They know how to sell. Now you'll know how to buy.</strong></span>
             </p>
             <a href="#contact" class="cta-button-primary">Book Call</a>
-
         </div>
     </section>
 
     <!-- Stats Strip -->
-    <section style="background:#C9A84A; padding:40px 20px;">
+    <section class="fade-in" style="background:#C9A84A; padding:40px 20px;">
         <div class="container" style="max-width:1100px; margin:0 auto;">
             <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px; text-align:center;">
                 <div style="flex:1; min-width:220px;">
@@ -61,11 +143,11 @@
     <!-- Does This Sound Familiar -->
     <section style="background:#0C1D39; padding:60px 20px;">
         <div class="container" style="max-width:700px; margin:0 auto; text-align:center;">
-            <h2 style="color:#C9A84A; font-family:'Montserrat',sans-serif; margin-bottom:40px;">Does This Sound Familiar?</h2>
+            <h2 class="fade-in" style="color:#C9A84A; font-family:'Montserrat',sans-serif; margin-bottom:40px;">Does This Sound Familiar?</h2>
             <ul style="list-style:none; text-align:center; margin:0 auto; padding:0;">
-                <li style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.1);">☑&nbsp;&nbsp;"I got 3 quotes but I still don't know which one to trust"</li>
-                <li style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.1);">☑&nbsp;&nbsp;"They said the price was only good for today"</li>
-                <li style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0;">☑&nbsp;&nbsp;"I don't know what's actually included"</li>
+                <li class="familiar-item" style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.1);">☑&nbsp;&nbsp;"I got 3 quotes but I still don't know which one to trust"</li>
+                <li class="familiar-item" style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.1);">☑&nbsp;&nbsp;"They said the price was only good for today"</li>
+                <li class="familiar-item" style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0;">☑&nbsp;&nbsp;"I don't know what's actually included"</li>
             </ul>
         </div>
     </section>
@@ -73,8 +155,8 @@
     <!-- About Todd -->
     <section id="why-me" class="why-me">
         <div class="container">
-            <h2>Insider Knowledge. On Your Side.</h2>
-            <div class="why-me-content">
+            <h2 class="fade-in">Insider Knowledge. On Your Side.</h2>
+            <div class="why-me-content fade-in">
                 <div style="text-align:center;">
                     <img src="images/todd-headshot.jpg" alt="Todd Parker - Certainty Home Consulting Founder" class="headshot">
                     <p style="color:#0C1D39; font-weight:600; margin-top:10px; font-size:0.95rem;">Todd Parker<br><span style="font-weight:400; color:#555;">Founder, Certainty Home Consulting</span></p>
@@ -89,8 +171,8 @@
     <!-- Testimonials -->
     <section class="testimonials" style="background:#E8E9E9; padding:60px 20px;">
         <div class="container" style="max-width:800px; margin:0 auto; text-align:center;">
-            <h2 style="color:#0C1D39; font-family:'Montserrat',sans-serif; margin-bottom:40px;">What Clients Say</h2>
-            <div style="background:#fff; border-left:4px solid #C9A84A; padding:32px 36px; border-radius:4px; text-align:left; box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+            <h2 class="fade-in" style="color:#0C1D39; font-family:'Montserrat',sans-serif; margin-bottom:40px;">What Clients Say</h2>
+            <div class="testimonial-card fade-in" style="background:#fff; border-left:4px solid #C9A84A; padding:32px 36px; border-radius:4px; text-align:left; box-shadow:0 2px 12px rgba(0,0,0,0.06);">
                 <p style="font-size:1.1rem; line-height:1.8; color:#333; font-style:italic; margin:0 0 20px 0;">
                     "Highly recommended experience!! Not only will you be better informed, but you will be more confident in your decisions. Knowledge is power! It was a very insightful discussion and prepares someone with no experience in getting information so they feel more comfortable in planning a window replacement renovation."
                 </p>
@@ -102,9 +184,9 @@
     <!-- Contact Form -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Quick Advisory Intake (2 minutes)</h2>
-            <p class="contact-helper">Share the essentials so Todd can prep useful guidance before your call.</p>
-            <form class="contact-form" novalidate>
+            <h2 class="fade-in">Quick Advisory Intake (2 minutes)</h2>
+            <p class="contact-helper fade-in">Share the essentials so Todd can prep useful guidance before your call.</p>
+            <form class="contact-form fade-in" novalidate>
                 <input type="text" name="website" id="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -158,7 +240,6 @@
                 </div>
                 <div class="footer-contact">
                     <p>Independent renovation advisory</p>
-
                 </div>
             </div>
             <div class="footer-bottom">
@@ -168,18 +249,8 @@
     </footer>
 
     <script src="script.js"></script>
-    <style>
-        .hero-phrase {
-            opacity: 0.35;
-            transition: opacity 0.6s ease, text-shadow 0.6s ease;
-        }
-        .hero-phrase.lit {
-            opacity: 1;
-            text-shadow: 0 0 28px rgba(201,168,74,0.55), 0 0 8px rgba(255,255,255,0.2);
-        }
-    </style>
     <script>
-        // Hero phrase spotlight effect
+        // ── Hero phrase spotlight ──
         const phrases = document.querySelectorAll('.hero-phrase');
         let current = 0;
         function lightNext() {
@@ -189,16 +260,68 @@
                 current++;
                 setTimeout(lightNext, 1400);
             } else {
-                // After last phrase, light all of them
                 phrases.forEach(p => p.classList.add('lit'));
             }
         }
         setTimeout(lightNext, 500);
-    </script>
-    <script>
-        // Count-up animation on scroll into view
+
+        // ── Sticky header shrink ──
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ── Floating CTA ──
+        const floatingCta = document.getElementById('floating-cta');
+        window.addEventListener('scroll', () => {
+            floatingCta.classList.toggle('show', window.scrollY > 400);
+        });
+
+        // ── Scroll fade-in + familiar items + testimonial glow ──
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const familiarItems = document.querySelectorAll('.familiar-item');
+        const testimonialCard = document.querySelector('.testimonial-card');
+
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        fadeEls.forEach(el => fadeObserver.observe(el));
+
+        // Familiar items stagger in one by one
+        const familiarObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    familiarItems.forEach((item, i) => {
+                        setTimeout(() => item.classList.add('visible'), i * 300);
+                    });
+                    familiarObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        if (familiarItems.length) familiarObserver.observe(familiarItems[0]);
+
+        // Testimonial glow on scroll into view
+        if (testimonialCard) {
+            const glowObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => testimonialCard.classList.add('glow'), 400);
+                        glowObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+            glowObserver.observe(testimonialCard);
+        }
+
+        // ── Count-up animation ──
         const counters = document.querySelectorAll('.count-up');
-        const observer = new IntersectionObserver((entries) => {
+        const countObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.dataset.animated) {
                     entry.target.dataset.animated = 'true';
@@ -214,7 +337,7 @@
                 }
             });
         }, { threshold: 0.3 });
-        counters.forEach(c => observer.observe(c));
+        counters.forEach(c => countObserver.observe(c));
     </script>
 </body>
 </html>
