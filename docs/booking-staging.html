@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Renovation Quote Review — Certainty Home Consulting</title>
+    <meta name="description" content="Get clarity before you commit. Book a 30-minute renovation quote review with Certainty Home Consulting.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        /* ── Page-level layout ── */
+        .checkout-wrapper {
+            max-width: 960px;
+            margin: 100px auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .checkout-header .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #2E6DA4;
+            margin-bottom: 0.75rem;
+        }
+
+        .checkout-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0c1d39;
+            margin-bottom: 0.75rem;
+        }
+
+        .checkout-header p {
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .tiers-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── Tier cards ── */
+        .tier-card {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tier-card.featured {
+            border-color: #2E6DA4;
+            position: relative;
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2E6DA4;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.9rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .tier-card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0c1d39;
+            margin-bottom: 0.4rem;
+        }
+
+        .tier-tagline {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-price {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #0c1d39;
+            margin-bottom: 0.25rem;
+        }
+
+        .tier-price-note {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+
+        .includes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+            flex: 1;
+        }
+
+        .includes-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.9375rem;
+            color: #374151;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .includes-list li::before {
+            content: "✓";
+            color: #2E6DA4;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            background: #2E6DA4;
+            color: #fff;
+            border: none;
+            padding: 0.9rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .cta-btn:hover {
+            background: #255B8A;
+        }
+
+        .secure-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            color: #9ca3af;
+            margin-top: 0.75rem;
+        }
+
+        .after-payment {
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .after-payment p {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 0.75rem;
+        }
+
+        .after-payment ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .after-payment li {
+            font-size: 0.9375rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/chc-logo.webp" alt="Certainty Home Consulting">
+                <span>Certainty Home Consulting</span>
+            </div>
+            <nav>
+                <a href="index.html">← Back to site</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="checkout-wrapper">
+
+        <div class="checkout-header">
+            <p class="eyebrow">Project Guidance Packages</p>
+            <h1>What You Don't Know About Your Renovation Quote Could Cost You Thousands.</h1>
+            <p>Expert renovation guidance — from someone who's seen it from the inside.</p>
+        </div>
+
+        <div class="tiers-grid">
+
+            <!-- Tier 1: Single Session -->
+            <div class="tier-card">
+                <h2>Single Session</h2>
+                <p class="tier-tagline">Clarity before you commit</p>
+                <div class="tier-price">$349</div>
+                <div class="tier-price-note">One-time · No subscription</div>
+                <p style="font-size:0.8rem; color:#6b7280; font-style:italic; margin-bottom:1rem;">A bad renovation decision can cost far more than this session.</p>
+                <ul class="includes-list">
+                    <li>One guidance call (up to 60 minutes)</li>
+                    <li>How renovation quotes are typically structured</li>
+                    <li>Where costs and margin can hide</li>
+                    <li>Decoding common sales tactics and pressure language</li>
+                    <li>Clarity on what to fully understand before signing</li>
+                    <li>Confidence to move forward — or walk away — on your terms</li>
+                </ul>
+                <a href="https://buy.stripe.com/cNibJ1fqE1IyfMF1oO2ZO01" class="cta-btn">Book Single Session — $349</a>
+                <div class="secure-note">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Secured by Stripe
+                </div>
+            </div>
+
+            <!-- Tier 2: Full Support Package -->
+            <div class="tier-card featured">
+                <span class="tier-badge">Most Support</span>
+                <h2>Full Support Package</h2>
+                <p class="tier-tagline">Guidance now, support through the decision</p>
+                <div class="tier-price">$489</div>
+                <div class="tier-price-note">One-time · No subscription</div>
+                <p style="font-size:0.8rem; color:#6b7280; font-style:italic; margin-bottom:1rem;">A bad renovation decision can cost far more than this session.</p>
+                <ul class="includes-list">
+                    <li>One guidance call (up to 60 minutes)</li>
+                    <li>How renovation quotes are typically structured</li>
+                    <li>Where costs and margin can hide</li>
+                    <li>Decoding common sales tactics and pressure language</li>
+                    <li>Clarity on what to fully understand before signing</li>
+                    <li><strong>Two follow-up support calls</strong> (up to 20 min each) — use before you sign if questions come up</li>
+                </ul>
+                <a href="https://buy.stripe.com/4gM28r92gbj8gQJc3s2ZO02" class="cta-btn">Book Full Support — $489</a>
+                <div class="secure-note">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Secured by Stripe
+                </div>
+            </div>
+
+        </div><!-- end .tiers-grid -->
+
+        <div class="after-payment">
+            <p>After payment</p>
+            <ul>
+                <li>✓ Confirmation email sent immediately</li>
+                <li>✓ Todd contacts you within 1 business day to schedule your call</li>
+
+            </ul>
+        </div>
+
+        <p style="font-size:0.8rem; color:#9ca3af; text-align:center; margin-top:1.5rem;">
+            Questions? Email <a href="mailto:todd@certaintyhomeconsulting.com" style="color:#6b7280;">todd@certaintyhomeconsulting.com</a>
+        </p>
+
+    </div><!-- end .checkout-wrapper -->
+
+    <script>
+        // Single Session $349
+        // product_id: prod_UGlBj3acFtevuo
+        // price_id:   price_1TIDfJFH565v30glAgpSwgv5
+        // payment_link: https://buy.stripe.com/cNibJ1fqE1IyfMF1oO2ZO01
+
+        // Full Support Package $489
+        // product_id: prod_UGlBjRiZVPayPh
+        // price_id:   price_1TIDfSFH565v30glIGEyy6Um
+        // payment_link: https://buy.stripe.com/4gM28r92gbj8gQJc3s2ZO02
+    </script>
+
+</body>
+</html>
