@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Stripe.js -->
     <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        function togglePayButtons(checked) {
+            document.querySelectorAll('.pay-btn').forEach(btn => {
+                btn.style.opacity = checked ? '1' : '0.4';
+                btn.style.pointerEvents = checked ? 'auto' : 'none';
+            });
+        }
+    </script>
     <style>
         /* ── Page-level layout ── */
         .checkout-wrapper {
@@ -225,7 +233,6 @@
                 <p class="tier-tagline">Clarity before you commit</p>
                 <div class="tier-price">$349</div>
                 <div class="tier-price-note">One-time · No subscription</div>
-                <p style="font-size:0.8rem; color:#6b7280; font-style:italic; margin-bottom:1rem;">A bad renovation decision can cost far more than this session.</p>
                 <ul class="includes-list">
                     <li>One guidance call (up to 60 minutes)</li>
                     <li>How renovation quotes are typically structured</li>
@@ -234,7 +241,7 @@
                     <li>Clarity on what to fully understand before signing</li>
                     <li>Confidence to move forward — or walk away — on your terms</li>
                 </ul>
-                <a href="https://buy.stripe.com/cNibJ1fqE1IyfMF1oO2ZO01" class="cta-btn">Book Single Session — $349</a>
+                <a href="https://buy.stripe.com/cNibJ1fqE1IyfMF1oO2ZO01" class="cta-btn pay-btn" id="btn-single" style="opacity:0.4; pointer-events:none;">Book Single Session — $349</a>
                 <div class="secure-note">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     Secured by Stripe
@@ -248,7 +255,6 @@
                 <p class="tier-tagline">Guidance now, support through the decision</p>
                 <div class="tier-price">$489</div>
                 <div class="tier-price-note">One-time · No subscription</div>
-                <p style="font-size:0.8rem; color:#6b7280; font-style:italic; margin-bottom:1rem;">A bad renovation decision can cost far more than this session.</p>
                 <ul class="includes-list">
                     <li>One guidance call (up to 60 minutes)</li>
                     <li>How renovation quotes are typically structured</li>
@@ -257,7 +263,7 @@
                     <li>Clarity on what to fully understand before signing</li>
                     <li><strong>Two follow-up support calls</strong> (up to 20 min each) — use before you sign if questions come up</li>
                 </ul>
-                <a href="https://buy.stripe.com/4gM28r92gbj8gQJc3s2ZO02" class="cta-btn">Book Full Support — $489</a>
+                <a href="https://buy.stripe.com/4gM28r92gbj8gQJc3s2ZO02" class="cta-btn pay-btn" id="btn-full" style="opacity:0.4; pointer-events:none;">Book Full Support — $489</a>
                 <div class="secure-note">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     Secured by Stripe
@@ -265,6 +271,19 @@
             </div>
 
         </div><!-- end .tiers-grid -->
+
+        <div style="background:#f3f4f6; border:1px solid #e5e7eb; border-radius:8px; padding:1.25rem 1.75rem; margin-top:2rem; font-size:0.82rem; color:#6b7280; line-height:1.6;">
+            <p style="font-weight:600; color:#374151; margin-bottom:0.4rem;">Important Scope Note</p>
+            <p style="margin:0;">Certainty Home Consulting provides independent homeowner guidance and education before signing renovation contracts. This service does not include contractor selection, contractor referrals, referral fees, quote comparison services, project management, home inspection, legal advice, or construction management. All final decisions remain with the homeowner.</p>
+            <p style="margin:0.75rem 0 0 0;">Certainty Home Consulting is not responsible for any contractor selection, project outcomes, financial loss, or damages of any kind resulting from decisions made by the homeowner after their session. Guidance provided is educational in nature and does not constitute legal, financial, or professional contracting advice. The homeowner assumes full responsibility for all decisions related to their renovation project.</p>
+            <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid #e5e7eb;">
+                <p style="font-size:0.85rem; color:#374151; font-weight:500; margin-bottom:0.5rem;">Please review and acknowledge the service scope before proceeding to payment.</p>
+                <label style="display:flex; align-items:flex-start; gap:0.6rem; cursor:pointer; font-size:0.85rem; color:#374151;">
+                    <input type="checkbox" id="agree_scope" style="margin-top:2px; flex-shrink:0;" onchange="togglePayButtons(this.checked)">
+                    I have read and agree to the service scope and limitations above.
+                </label>
+            </div>
+        </div>
 
         <div class="after-payment">
             <p>After payment</p>
