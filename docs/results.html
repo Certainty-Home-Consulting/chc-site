@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Results — Certainty Home Consulting</title>
+    <meta name="description" content="See how Certainty Home Consulting has helped homeowners make confident renovation decisions and avoid overpaying.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .results-hero {
+            background: #0C1D39;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+        .results-hero .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #C9A84A;
+            margin-bottom: 1rem;
+        }
+        .results-hero h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .results-hero p {
+            color: #b7c7eb;
+            font-size: 1.05rem;
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .case-studies {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .case-study {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+            padding: 2.5rem 3rem;
+            margin-bottom: 2.5rem;
+            border-top: 4px solid #C9A84A;
+        }
+
+        .case-study .meta {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #C9A84A;
+            margin-bottom: 1rem;
+        }
+
+        .case-study h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0C1D39;
+            margin-bottom: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .case-study .result-highlight {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .result-stat {
+            text-align: center;
+            flex: 1;
+            min-width: 140px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.25rem 1rem;
+        }
+
+        .result-stat .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0C1D39;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+        }
+
+        .result-stat .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .result-stat.highlight .stat-number {
+            color: #2E6DA4;
+        }
+
+        .case-study .story {
+            font-size: 1rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-study blockquote {
+            border-left: 3px solid #C9A84A;
+            padding: 0.75rem 1.25rem;
+            margin: 1.5rem 0 0;
+            background: #fffdf5;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .case-study blockquote p {
+            font-style: italic;
+            color: #374151;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .case-study blockquote cite {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0C1D39;
+            font-style: normal;
+        }
+
+        .cta-section {
+            background: #0C1D39;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .cta-section h2 {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: #b7c7eb;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .cta-section a {
+            background: #C9A84A;
+            color: #0C1D39;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .cta-section a:hover {
+            background: #b8943f;
+        }
+
+        @media (max-width: 600px) {
+            .case-study { padding: 1.75rem 1.25rem; }
+            .results-hero h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/chc-logo.webp" alt="Certainty Home Consulting">
+                <span>Certainty Home Consulting</span>
+            </div>
+            <nav>
+                <a href="index.html#why-me">Services</a>
+                <a href="index.html#why-me">About</a>
+                <a href="results.html" style="color:#C9A84A; font-weight:600;">Results</a>
+                <a href="book-review.html" class="cta-button">Book Call</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="results-hero">
+        <p class="eyebrow">Real Clients. Real Outcomes.</p>
+        <h1>What Happens When Homeowners Go In Prepared</h1>
+        <p>These aren't testimonials about a pleasant experience. These are outcomes — decisions made with clarity, not pressure.</p>
+    </section>
+
+    <!-- Case Studies -->
+    <div class="case-studies">
+
+        <!-- Betty -->
+        <div class="case-study">
+            <p class="meta">Window Replacement · Fresno, CA</p>
+            <h2>From a $39,000 Quote to a $15,000 Project</h2>
+
+            <div class="result-highlight">
+                <div class="result-stat">
+                    <span class="stat-number">$39K</span>
+                    <span class="stat-label">Original quote</span>
+                </div>
+                <div class="result-stat highlight">
+                    <span class="stat-number">$15K</span>
+                    <span class="stat-label">Final cost</span>
+                </div>
+                <div class="result-stat highlight">
+                    <span class="stat-number">$24K</span>
+                    <span class="stat-label">Kept in her pocket</span>
+                </div>
+            </div>
+
+            <div class="story">
+                <p>Betty was preparing to move forward on a full window replacement and door installation. She had a quote in hand for $39,000 and was nearly ready to sign.</p>
+                <p>Before committing, she booked a session with Certainty Home Consulting.</p>
+                <p>In one call, we walked through how window replacement quotes are typically structured — what drives the cost, where margin hides, and what a competitive price actually looks like for her scope of work. Betty went back to the process with a clearer lens and the right questions.</p>
+                <p>She got her project done for $15,000.</p>
+            </div>
+
+            <blockquote>
+                <p>"Highly recommended experience!! Not only will you be better informed, but you will be more confident in your decisions. Knowledge is power! It was a very insightful discussion and prepares someone with no experience in getting information so they feel more comfortable in planning a window replacement renovation."</p>
+                <cite>— Betty · Fresno, CA</cite>
+            </blockquote>
+        </div>
+
+    </div><!-- end .case-studies -->
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Your project deserves the same clarity.</h2>
+        <p>One session before you sign could be the most valuable hour you spend.</p>
+        <a href="book-review.html">Book Your Session</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/chc-logo.webp" alt="Certainty Home Consulting">
+                    <span>Certainty Home Consulting</span>
+                </div>
+                <div class="footer-contact">
+                    <p>Independent renovation advisory</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Certainty Home Consulting. All rights reserved. <a href="https://wade.digital" target="_blank" rel="noopener noreferrer">Built by wade.digital</a> · v0.2.2</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
