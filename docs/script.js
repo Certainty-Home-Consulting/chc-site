@@ -75,8 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: formBody
                 });
 
-                setStatus('Thanks — your advisory request is in. Todd will follow up shortly.');
+                setStatus('Submitted! Redirecting to your booking options...');
                 this.reset();
+                setTimeout(() => { window.location.href = 'book-review.html'; }, 1500);
             } catch (err) {
                 setStatus('Submission failed. Please try again in a minute.');
                 console.error(err);
