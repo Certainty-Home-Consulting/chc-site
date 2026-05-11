@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CHC Lead Intake - C4 L2 + L3</title>
+  <style>
+    body{font-family:Inter,system-ui,sans-serif;background:#0b1020;color:#e8ecf3;margin:0;padding:24px}
+    h1{margin:0 0 8px 0;font-size:22px}
+    h2{margin:20px 0 8px 0;font-size:16px;color:#93c5fd}
+    .small{font-size:12px;color:#a9b4c7}
+    .row{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:8px;align-items:stretch;margin-top:10px}
+    .box{border:1px solid #334155;border-radius:10px;padding:12px;background:#111827}
+    .ext{background:#1f2937}.sys{background:#0f172a}.data{background:#172554}.comp{background:#1e293b}
+    .title{font-weight:700;font-size:14px;margin-bottom:6px}
+    .arrow{font-size:24px;text-align:center;color:#7dd3fc;align-self:center}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+    .legend{margin-top:14px;font-size:12px;color:#9fb0c8}
+    code{background:#0b1220;padding:1px 4px;border-radius:4px}
+    .hr{height:1px;background:#334155;margin:16px 0}
+  </style>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3P9BSF2516"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3P9BSF2516');
+    </script>
+</head>
+<body>
+  <h1>CHC Intake Architecture</h1>
+  <div class="small">C4 Level 2 (Containers) + Level 3 (Components in Apps Script)</div>
+
+  <h2>Level 2 — Container View</h2>
+  <div class="row">
+    <div class="box ext"><div class="title">Person: Homeowner Lead</div><div class="small">Submits advisory form.</div></div>
+    <div class="arrow">→</div>
+    <div class="box sys"><div class="title">Container: CHC Site (GitHub Pages)</div><div class="small">Static form UI</div></div>
+    <div class="arrow">→</div>
+    <div class="box sys"><div class="title">Container: Apps Script Web API</div><div class="small">Processes POST, validates, routes.</div></div>
+  </div>
+  <div class="row">
+    <div class="box data"><div class="title">Container: Google Sheet</div><div class="small">Lead log + status</div></div>
+    <div class="arrow">←</div>
+    <div class="box sys"><div class="title">Container: Gmail Sender</div><div class="small">Lead notification emails</div></div>
+    <div class="arrow">←</div>
+    <div class="box ext"><div class="title">Person: Todd/CHC</div><div class="small">Receives alerts + follows up</div></div>
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>Level 3 — Component View (inside Apps Script Web API)</h2>
+  <div class="grid2">
+    <div class="box comp">
+      <div class="title">doPost(e) — Controller</div>
+      <div class="small">Entry point. Parses JSON/form, handles CORS, returns JSON response.</div>
+    </div>
+    <div class="box comp">
+      <div class="title">validateLead(payload)</div>
+      <div class="small">Required fields, email format, budget/timeline sanity checks.</div>
+    </div>
+    <div class="box comp">
+      <div class="title">spamGuard(payload, e)</div>
+      <div class="small">Honeypot check, basic rate-limit key (IP/user agent/timestamp).</div>
+    </div>
+    <div class="box comp">
+      <div class="title">normalizeLead(payload)</div>
+      <div class="small">Canonical field mapping + trim + timestamp + source metadata.</div>
+    </div>
+    <div class="box comp">
+      <div class="title">writeLeadToSheet(lead)</div>
+      <div class="small">Append row to <code>Leads</code> sheet, set initial status <code>new</code>.</div>
+    </div>
+    <div class="box comp">
+      <div class="title">sendLeadEmail(lead)</div>
+      <div class="small">Formats plaintext/HTML summary and sends to CHC inbox.</div>
+    </div>
+    <div class="box comp">
+      <div class="title">buildSuccessResponse(id)</div>
+      <div class="small">Returns success token/lead id for thank-you UX.</div>
+    </div>
+    <div class="box comp">
+      <div class="title">logError(err, context)</div>
+      <div class="small">Write diagnostics to script logs + optional <code>Errors</code> sheet.</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    Next implementation step: scaffold Apps Script project + deploy web app URL, then wire site form action to endpoint.
+  </div>
+</body>
+</html>

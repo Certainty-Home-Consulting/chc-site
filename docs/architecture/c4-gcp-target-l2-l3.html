@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CHC Target Architecture on GCP</title>
+  <style>
+    body{font-family:Inter,system-ui,sans-serif;background:#0b1020;color:#e8ecf3;margin:0;padding:20px}
+    h1{font-size:22px;margin:0 0 6px 0}
+    h2{font-size:15px;color:#93c5fd;margin:14px 0 8px}
+    .small{font-size:12px;color:#aab7cc}
+    .row{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:8px;align-items:stretch;margin:8px 0}
+    .box{background:#111827;border:1px solid #334155;border-radius:10px;padding:10px}
+    .ext{background:#1f2937}.sys{background:#0f172a}.data{background:#172554}.sec{background:#3b1f2b}
+    .title{font-size:13px;font-weight:700;margin-bottom:5px}
+    .arrow{display:flex;align-items:center;justify-content:center;color:#7dd3fc;font-size:22px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    code{background:#0b1220;padding:1px 4px;border-radius:4px}
+  </style>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3P9BSF2516"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3P9BSF2516');
+    </script>
+</head>
+<body>
+  <h1>CHC Web Intake — GCP Buildout (Target)</h1>
+  <div class="small">Project: <code>chc-260226-27954</code> · Goal: replace Apps Script transport with scalable GCP path</div>
+
+  <h2>L2 Container View</h2>
+  <div class="row">
+    <div class="box ext"><div class="title">Person: Homeowner</div><div class="small">Submits form from CHC site</div></div>
+    <div class="arrow">→</div>
+    <div class="box sys"><div class="title">CHC Static Site</div><div class="small">GitHub Pages + custom domain</div></div>
+    <div class="arrow">→</div>
+    <div class="box sys"><div class="title">Cloud Run API</div><div class="small"><code>POST /api/lead</code> contract</div></div>
+  </div>
+
+  <div class="row">
+    <div class="box data"><div class="title">Firestore (Leads)</div><div class="small">Primary lead store + status</div></div>
+    <div class="arrow">←</div>
+    <div class="box sys"><div class="title">Pub/Sub Topic</div><div class="small">Async fan-out for notifications</div></div>
+    <div class="arrow">←</div>
+    <div class="box sys"><div class="title">Cloud Run Worker</div><div class="small">Email + CRM hooks + retries</div></div>
+  </div>
+
+  <div class="row">
+    <div class="box data"><div class="title">BigQuery (Billing/Analytics)</div><div class="small">Cost tracking + funnel analytics</div></div>
+    <div class="arrow">←</div>
+    <div class="box sys"><div class="title">Cloud Logging + Error Reporting</div><div class="small">Observability + alerting</div></div>
+    <div class="arrow">←</div>
+    <div class="box ext"><div class="title">Todd / CHC Ops</div><div class="small">Views leads dashboard + alerts</div></div>
+  </div>
+
+  <h2>L3 API Components (Cloud Run service)</h2>
+  <div class="grid">
+    <div class="box"><div class="title">LeadController</div><div class="small">HTTP/CORS, schema validate, idempotency key</div></div>
+    <div class="box"><div class="title">LeadService</div><div class="small">Normalize + enrich + persist</div></div>
+    <div class="box"><div class="title">SpamGuard</div><div class="small">honeypot + rate limit + bot heuristics</div></div>
+    <div class="box"><div class="title">LeadRepository</div><div class="small">Firestore adapter</div></div>
+    <div class="box"><div class="title">EventPublisher</div><div class="small">Pub/Sub publish <code>lead.created</code></div></div>
+    <div class="box"><div class="title">ResponseFactory</div><div class="small">Deterministic success/error payloads</div></div>
+  </div>
+
+  <h2>Security + Ops</h2>
+  <div class="row">
+    <div class="box sec"><div class="title">Secret Manager</div><div class="small">mailer creds, webhook tokens</div></div>
+    <div class="arrow">→</div>
+    <div class="box sec"><div class="title">Service Accounts (least privilege)</div><div class="small">api-sa, worker-sa</div></div>
+    <div class="arrow">→</div>
+    <div class="box sec"><div class="title">Budget Alerts</div><div class="small">$25/mo cap with 50/75/90/100%</div></div>
+  </div>
+
+  <div class="small" style="margin-top:10px">Migration stance: frontend contract unchanged (<code>FORM_ENDPOINT</code> + payload schema). Swap transport from Apps Script to Cloud Run with zero form redesign.</div>
+</body>
+</html>
