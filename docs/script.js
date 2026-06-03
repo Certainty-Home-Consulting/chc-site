@@ -21,6 +21,24 @@ document.addEventListener('DOMContentLoaded', function() {
         if (el) el.textContent = msg || '';
     };
 
+    // Pre-fill name/email when arriving from the free-guide landing page
+    // (e.g. index.html?prefill_name=Jane&prefill_email=jane@x.com#contact)
+    (function prefillFromQuery() {
+        const params = new URLSearchParams(window.location.search);
+        const pName = params.get('prefill_name');
+        const pEmail = params.get('prefill_email');
+        const nameEl = document.getElementById('name');
+        const emailEl = document.getElementById('email');
+        if (pName && nameEl) nameEl.value = pName;
+        if (pEmail && emailEl) emailEl.value = pEmail;
+        if ((pName || pEmail) && document.getElementById('contact')) {
+            // jump to the form so they can finish where they left off
+            setTimeout(() => {
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
+    })();
+
     // Contact form handling
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
