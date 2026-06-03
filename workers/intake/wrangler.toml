@@ -1,0 +1,17 @@
+name = "chc-intake"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+account_id = "e35f5e331d6dd9c61f63109778d2ec59"
+workers_dev = false
+
+routes = [
+  { pattern = "certaintyhomeconsulting.com/api/lead", zone_name = "certaintyhomeconsulting.com" }
+]
+
+[vars]
+NOTIFY_TO = "thp39.sp@gmail.com"
+NOTIFY_FROM = "intake@certaintyhomeconsulting.com"
+
+# Secrets (set via: wrangler secret put <NAME>)
+# RESEND_API_KEY         — Resend API key for outbound email
+# DISCORD_WEBHOOK_URL    — optional, posts new lead to #chc

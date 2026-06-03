@@ -1,4 +1,4 @@
-const CHC_FORM_ENDPOINT = window.CHC_FORM_ENDPOINT || 'https://script.google.com/macros/s/AKfycbzREDZeb6ZUx7lYwdNJZqT1RFynI4lV0RfB71AXXVnMBo0JXh2lxUbE3Uo65aVdcC3D-w/exec';
+const CHC_FORM_ENDPOINT = window.CHC_FORM_ENDPOINT || 'https://certaintyhomeconsulting.com/api/lead';
 
 // Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {

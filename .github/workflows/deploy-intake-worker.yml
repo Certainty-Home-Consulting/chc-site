@@ -1,0 +1,44 @@
+name: Deploy Intake Worker
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'workers/intake/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Cloudflare Workers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: workers/intake/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: workers/intake
+
+      - name: Deploy worker
+        run: npx wrangler deploy
+        working-directory: workers/intake
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      - name: Push RESEND_API_KEY secret
+        run: echo "${{ secrets.RESEND_API_KEY }}" | npx wrangler secret put RESEND_API_KEY
+        working-directory: workers/intake
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      - name: Push DISCORD_WEBHOOK_URL secret
+        if: ${{ secrets.DISCORD_WEBHOOK_URL != '' }}
+        run: echo "${{ secrets.DISCORD_WEBHOOK_URL }}" | npx wrangler secret put DISCORD_WEBHOOK_URL
+        working-directory: workers/intake
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
