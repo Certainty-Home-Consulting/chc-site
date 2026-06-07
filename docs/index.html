@@ -86,6 +86,19 @@
             box-shadow: 0 4px 32px rgba(201,168,74,0.3), 0 2px 12px rgba(0,0,0,0.06) !important;
             transform: translateY(-3px);
         }
+
+        /* ── Free guide band + pricing packages ── */
+        .pkg-wrap { display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; text-align:left; }
+        .pkg-card { flex:1; min-width:300px; max-width:420px; background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:2rem 2rem 2.25rem; box-shadow:0 6px 24px rgba(12,29,57,0.07); position:relative; }
+        .pkg-card h3 { font-family:'Montserrat',sans-serif; color:#0C1D39; font-size:1.3rem; margin-bottom:0.25rem; }
+        .pkg-sub { color:#6b7280; font-size:0.95rem; margin-bottom:1rem; }
+        .pkg-price { font-size:2.5rem; font-weight:700; color:#0C1D39; font-family:'Montserrat',sans-serif; margin-bottom:1.25rem; }
+        .pkg-list { list-style:none; padding:0; margin:0 0 1.75rem; }
+        .pkg-list li { color:#374151; font-size:0.95rem; padding:7px 0; line-height:1.45; }
+        .pkg-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#C9A84A; color:#0C1D39; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:5px 14px; border-radius:30px; white-space:nowrap; }
+        .pkg-card .cta-button-primary { display:block; text-align:center; }
+        .hero-secondary { display:inline-block; margin-left:14px; color:#fff; font-weight:600; font-size:1rem; text-decoration:none; border-bottom:2px solid #C9A84A; padding-bottom:2px; }
+        @media (max-width:600px){ .hero-secondary { display:block; margin:1rem 0 0 0; } }
     </style>
 
     <!-- Google Analytics 4 -->
@@ -126,7 +139,8 @@
                 <span class="hero-phrase">Most homeowners don't realize they've overpaid until it's too late.</span><br>
                 <span class="hero-phrase"><strong>They know how to sell. Now you'll know how to buy.</strong></span>
             </p>
-            <a href="#contact" class="cta-button-primary">Book Call</a>
+            <a href="#contact" class="cta-button-primary">Book a Call</a>
+            <a href="guide/" class="hero-secondary">Not ready? Get the free guide →</a>
         </div>
     </section>
 
@@ -160,6 +174,16 @@
                 <li class="familiar-item" style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.1);">☑&nbsp;&nbsp;"I don't know what's actually included"</li>
                 <li class="familiar-item" style="color:#E8E9E9; font-size:1.0625rem; padding:14px 0;">☑&nbsp;&nbsp;"I don't know if this price is fair"</li>
             </ul>
+        </div>
+    </section>
+
+    <!-- Free Guide Band -->
+    <section class="fade-in" style="background:#E8E9E9; padding:56px 20px; text-align:center;">
+        <div class="container" style="max-width:760px; margin:0 auto;">
+            <p style="font-size:0.75rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#C9A84A; margin-bottom:0.75rem;">Free Homeowner Guide</p>
+            <h2 style="color:#0C1D39; font-family:'Montserrat',sans-serif; font-size:1.6rem; margin-bottom:1rem;">Not Ready Yet? Start Here.</h2>
+            <p style="color:#374151; font-size:1.05rem; line-height:1.7; margin-bottom:1.75rem;">Grab the free guide &mdash; the 6 questions to ask before signing any renovation contract. The same insider checklist that's saved homeowners thousands.</p>
+            <a href="guide/" style="background:#C9A84A; color:#0C1D39; padding:0.95rem 2rem; border-radius:8px; font-weight:700; text-decoration:none; font-size:1rem; display:inline-block;">Get the Free Guide &rarr;</a>
         </div>
     </section>
 
@@ -207,6 +231,48 @@
                     <p style="font-weight:700; color:#0C1D39; margin:0;">— Jerry Hudson, Gutter Installation Project · Portsmouth, VA</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Packages -->
+    <section class="fade-in" style="background:#fff; padding:70px 20px;">
+        <div class="container" style="max-width:980px; margin:0 auto; text-align:center;">
+            <p style="font-size:0.75rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#C9A84A; margin-bottom:0.75rem;">Guidance Packages</p>
+            <h2 style="color:#0C1D39; font-family:'Montserrat',sans-serif; font-size:2rem; margin-bottom:0.75rem;">Simple, Honest Pricing</h2>
+            <p style="color:#374151; font-size:1.1rem; line-height:1.7; max-width:680px; margin:0 auto 0.5rem;">One session helped a homeowner take a <strong>$39,000 quote down to $15,000</strong>. For most homeowners, the call pays for itself many times over.</p>
+            <p style="color:#6b7280; font-size:0.95rem; margin-bottom:2.5rem;">Independent guidance before you sign &mdash; no referrals, no sales pitch, just clarity.</p>
+
+            <div class="pkg-wrap">
+                <div class="pkg-card" style="border-top:4px solid #2E6DA4;">
+                    <h3>Single Session</h3>
+                    <p class="pkg-sub">Clarity before you commit</p>
+                    <p class="pkg-price">$349</p>
+                    <ul class="pkg-list">
+                        <li>&#9989; One guidance call (up to 60 minutes)</li>
+                        <li>&#9989; Learn how renovation quotes are structured</li>
+                        <li>&#9989; The key questions to ask before committing</li>
+                        <li>&#9989; Decode common sales tactics &amp; pressure language</li>
+                        <li>&#9989; Confidence to move forward &mdash; or walk away &mdash; on your terms</li>
+                    </ul>
+                    <a href="#contact" class="cta-button-primary">Get Started</a>
+                </div>
+
+                <div class="pkg-card" style="border-top:4px solid #C9A84A;">
+                    <span class="pkg-badge">Most Support</span>
+                    <h3>Full Support</h3>
+                    <p class="pkg-sub">Guidance through the whole decision</p>
+                    <p class="pkg-price">$489</p>
+                    <ul class="pkg-list">
+                        <li>&#9989; Everything in the Single Session</li>
+                        <li>&#9989; Two follow-up support calls (up to 20 min each)</li>
+                        <li>&#9989; Backup for questions that come up before you sign</li>
+                        <li>&#9989; Use them if something changes or starts to feel rushed</li>
+                    </ul>
+                    <a href="#contact" class="cta-button-primary">Get Started</a>
+                </div>
+            </div>
+
+            <p style="color:#9aa3ad; font-size:0.82rem; margin-top:2.25rem; max-width:660px; margin-left:auto; margin-right:auto; line-height:1.5;">Independent homeowner guidance and education before signing a renovation contract. Does not include contractor selection, referrals, project management, home inspection, or legal advice. All final decisions remain with the homeowner.</p>
         </div>
     </section>
 
