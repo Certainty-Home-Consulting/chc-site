@@ -39,6 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })();
 
+    // Plan selection: when a pricing card's "Get Started" is clicked, remember
+    // which plan so we can send them to the right Stripe checkout after intake.
+    const STRIPE_LINKS = {
+        single: 'https://buy.stripe.com/cNibJ1fqE1IyfMF1oO2ZO01',
+        full:   'https://buy.stripe.com/4gM28r92gbj8gQJc3s2ZO02'
+    };
+    document.querySelectorAll('[data-plan]').forEach(el => {
+        el.addEventListener('click', function() {
+            try { sessionStorage.setItem('chc_plan', this.getAttribute('data-plan')); } catch (e) {}
+        });
+    });
+
     // Contact form handling
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
@@ -93,9 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: formBody
                 });
 
-                setStatus('Submitted! Redirecting to your booking options...');
+                // If they came from a pricing card, send them straight to that
+                // plan's Stripe checkout; otherwise fall back to the booking page.
+                let plan = null;
+                try { plan = sessionStorage.getItem('chc_plan'); sessionStorage.removeItem('chc_plan'); } catch (e) {}
+                const dest = (plan && STRIPE_LINKS[plan]) ? STRIPE_LINKS[plan] : 'book-review.html';
+                setStatus(plan ? 'Got it! Taking you to secure checkout...' : 'Submitted! Redirecting to your booking options...');
                 this.reset();
-                setTimeout(() => { window.location.href = 'book-review.html'; }, 1500);
+                setTimeout(() => { window.location.href = dest; }, 1500);
             } catch (err) {
                 setStatus('Submission failed. Please try again in a minute.');
                 console.error(err);
