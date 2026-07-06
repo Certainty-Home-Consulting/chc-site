@@ -42,6 +42,8 @@
   .g-success p{ color:#555; font-size:.95rem; margin-bottom:18px; }
   .g-dl{ display:block; background:var(--gold); color:var(--navy); font-weight:700; text-decoration:none; padding:14px; border-radius:8px; margin-bottom:12px; }
   .g-dl:hover{ background:#b8943f; }
+  .g-booknote{ font-size:.92rem; color:#374151; line-height:1.6; text-align:left; margin:4px 0 14px; padding-top:14px; border-top:1px solid #e5e5e5; }
+  .g-booknote em{ font-style:italic; color:var(--navy); font-weight:600; }
   .g-book{ display:block; background:var(--blue); color:#fff; font-weight:700; text-decoration:none; padding:14px; border-radius:8px; }
   .g-book:hover{ background:var(--blue-dark); }
 
@@ -80,7 +82,7 @@
       <nav>
         <a href="../index.html#why-me">About</a>
         <a href="../results.html">Results</a>
-        <a href="../index.html#contact" class="cta-button">Book Call</a>
+        <a href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener" class="cta-button">Free Quote Review</a>
       </nav>
     </div>
   </header>
@@ -130,7 +132,8 @@
           <h2>Your guide is ready!</h2>
           <p>Click below to open it now.</p>
           <a id="g-download" class="g-dl" href="6-questions-renovation-contract.pdf" download>&#128214; Download the Guide (PDF)</a>
-          <a id="g-bookcall" class="g-book" href="../index.html#contact">Have a project? Book a Call &rarr;</a>
+          <p class="g-booknote">Planning a renovation in the next year? The biggest savings happen <em>before</em> you sign. Hop on a quick call and tell me where you&rsquo;re at &mdash; I&rsquo;ll help you save money, sidestep the costly mistakes, and move forward feeling completely confident.</p>
+          <a id="g-bookcall" class="g-book" href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener">Free Quote Review &rarr;</a>
         </div>
       </div>
     </div>
@@ -178,10 +181,10 @@
   function reveal(name, email){
     formWrap.style.display = 'none';
     success.style.display = 'block';
-    // Pre-fill the Book-a-Call link so they don't re-type their info
+    // Pre-fill the Calendly booking link so they don't re-type their info
     var book = document.getElementById('g-bookcall');
-    book.href = '../index.html?prefill_name=' + encodeURIComponent(name) +
-                '&prefill_email=' + encodeURIComponent(email) + '#contact';
+    book.href = 'https://calendly.com/certaintyhomeconsulting/renovation-call?name=' +
+                encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
     // Auto-start the download
     setTimeout(function(){
       var a = document.getElementById('g-download');
