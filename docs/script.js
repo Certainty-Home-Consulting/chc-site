@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
         single: 'https://buy.stripe.com/cNibJ1fqE1IyfMF1oO2ZO01',
         full:   'https://buy.stripe.com/4gM28r92gbj8gQJc3s2ZO02'
     };
+    // Clear any stale plan on page load, so ONLY a pricing "Get Started" click
+    // made during this page view can ever route the intake form to Stripe.
+    try { sessionStorage.removeItem('chc_plan'); } catch (e) {}
     document.querySelectorAll('[data-plan]').forEach(el => {
         el.addEventListener('click', function() {
             try { sessionStorage.setItem('chc_plan', this.getAttribute('data-plan')); } catch (e) {}
