@@ -87,7 +87,7 @@
             transform: translateY(-3px);
         }
 
-        /* ── Free guide band + pricing packages ── */
+        /* ── Pricing packages ── */
         .pkg-wrap { display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; text-align:left; }
         .pkg-card { flex:1; min-width:300px; max-width:420px; background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:2rem 2rem 2.25rem; box-shadow:0 6px 24px rgba(12,29,57,0.07); position:relative; }
         .pkg-card h3 { font-family:'Montserrat',sans-serif; color:#0C1D39; font-size:1.3rem; margin-bottom:0.25rem; }
@@ -97,8 +97,8 @@
         .pkg-list li { color:#374151; font-size:0.95rem; padding:7px 0; line-height:1.45; }
         .pkg-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#C9A84A; color:#0C1D39; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:5px 14px; border-radius:30px; white-space:nowrap; }
         .pkg-card .cta-button-primary { display:block; text-align:center; }
-        .hero-secondary { display:inline-block; margin-left:14px; color:#fff; font-weight:600; font-size:1rem; text-decoration:none; border-bottom:2px solid #C9A84A; padding-bottom:2px; }
-        @media (max-width:600px){ .hero-secondary { display:block; margin:1rem 0 0 0; } }
+        .hero-support { max-width:640px; margin:1.5rem auto 0; color:#ecf0f1; font-size:1.05rem; line-height:1.7; font-weight:500; text-shadow:1px 1px 2px rgba(0,0,0,0.3); }
+        @media (max-width:600px){ .hero-support { font-size:1rem; margin-top:1.25rem; } }
     </style>
 
     <!-- Google Analytics 4 -->
@@ -113,7 +113,7 @@
 <body>
 
     <!-- Floating CTA -->
-    <a href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener" id="floating-cta">Free Quote Review →</a>
+    <a href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener" id="floating-cta">Analyze My Project →</a>
 
     <!-- Header -->
     <header>
@@ -125,7 +125,7 @@
             <nav>
                 <a href="#why-me">About</a>
                 <a href="results.html">Results</a>
-                <a href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener" class="cta-button">Free Quote Review</a>
+                <a href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener" class="cta-button">Analyze My Project</a>
             </nav>
         </div>
     </header>
@@ -139,8 +139,8 @@
                 <span class="hero-phrase">Most homeowners don't realize they've overpaid until it's too late.</span><br>
                 <span class="hero-phrase"><strong>They know how to sell. Now you'll know how to buy.</strong></span>
             </p>
-            <a href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener" class="cta-button-primary">Get Your Free Quote Review &rarr;</a>
-            <a href="guide/" class="hero-secondary">Not sure yet? Get the free guide →</a>
+            <a href="https://calendly.com/certaintyhomeconsulting/renovation-call" target="_blank" rel="noopener" class="cta-button-primary">Have Todd Analyze Your Project &rarr;</a>
+            <p class="hero-support">Not sure if your quote is fair &mdash; or where to even start? Todd knows how these quotes really work. Have him analyze your project or quotes on a complimentary call.</p>
         </div>
     </section>
 
@@ -177,24 +177,14 @@
         </div>
     </section>
 
-    <!-- Free Guide Band -->
-    <section class="fade-in" style="background:#E8E9E9; padding:56px 20px; text-align:center;">
-        <div class="container" style="max-width:760px; margin:0 auto;">
-            <p style="font-size:0.75rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#C9A84A; margin-bottom:0.75rem;">Free Homeowner Guide</p>
-            <h2 style="color:#0C1D39; font-family:'Montserrat',sans-serif; font-size:1.6rem; margin-bottom:1rem;">Not Ready Yet? Start Here.</h2>
-            <p style="color:#374151; font-size:1.05rem; line-height:1.7; margin-bottom:1.75rem;">Grab the free guide &mdash; the 6 questions to ask before signing any renovation contract. The same insider checklist that's saved homeowners thousands.</p>
-            <a href="guide/" style="background:#C9A84A; color:#0C1D39; padding:0.95rem 2rem; border-radius:8px; font-weight:700; text-decoration:none; font-size:1rem; display:inline-block;">Get the Free Guide &rarr;</a>
-        </div>
-    </section>
-
     <!-- Why it's free -->
     <section class="fade-in" style="background:#fff; padding:64px 20px;">
         <div style="max-width:640px; margin:0 auto; padding:0 20px;">
-            <h2 style="color:#0C1D39; font-family:'Montserrat',sans-serif; font-size:1.7rem; margin-bottom:1.25rem; text-align:center;">So why are the guide and first call free?</h2>
+            <h2 style="color:#0C1D39; font-family:'Montserrat',sans-serif; font-size:1.7rem; margin-bottom:1.25rem; text-align:center;">So why is the first call free?</h2>
             <p style="color:#0C1D39; font-size:1.15rem; font-weight:600; line-height:1.7; margin-bottom:1.75rem; text-align:center;">Because you shouldn't have to pay to find out if I can help.</p>
             <p style="color:#374151; font-size:1.05rem; line-height:1.85; margin-bottom:1.25rem;">For 15 years, I worked inside the renovation industry, and I saw how easily homeowners end up overpaying. Not because they're careless, but because the whole process is built to favor the contractor, and no one in the room is working for them.</p>
             <p style="color:#374151; font-size:1.05rem; line-height:1.85; margin-bottom:1.25rem;">That's the gap Certainty Home Consulting fills. I'm an independent advisor who answers to one person: you, the homeowner. It's a new kind of service, and I don't expect you to take my word for it.</p>
-            <p style="color:#374151; font-size:1.05rem; line-height:1.85; margin-bottom:0;">So I put the guide and the first call in your hands up front. If it helps and you want to go further, we can. If not, you'll still walk away knowing exactly what to watch for. That's a win either way.</p>
+            <p style="color:#374151; font-size:1.05rem; line-height:1.85; margin-bottom:0;">So I put the first call in your hands up front. If it helps and you want to go further, we can. If not, you'll still walk away knowing exactly what to watch for. That's a win either way.</p>
         </div>
     </section>
 
