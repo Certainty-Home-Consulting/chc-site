@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Internal working documents — not for public search results
+Disallow: /internal/
+Disallow: /contracts/
+
+# Staging and post-transaction pages — no search value
+Disallow: /staging.html
+Disallow: /booking-staging.html
+Disallow: /success.html
+Disallow: /cancel.html
+
+Sitemap: https://certaintyhomeconsulting.com/sitemap.xml
